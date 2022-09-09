@@ -2,7 +2,7 @@ import { response } from 'express';
 import request from 'supertest';
 import assert  from 'supertest';
 import { app } from '../../app';
-  
+
 
 it('fails when a email that does not exist is supplied',async() => {
     await request(app)
@@ -12,6 +12,7 @@ it('fails when a email that does not exist is supplied',async() => {
         password:'testpassword'
     })
     .expect(400)
+
 })
 
 
@@ -52,6 +53,6 @@ it('it responds with a cookie when given valid credentials',async () => {
 
     expect(response.get('Set-Cookie')).toBeDefined();
 
-    
+
 
 })
