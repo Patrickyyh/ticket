@@ -17,7 +17,7 @@ import {
   '../events/publishers/payment-created-publisher';
 import { natsWrapper } from '../nats-wrapper';
 
-console.log("here")
+console.log("here here")
  const router = express.Router();
  router.post('/api/payment' ,requireAuth ,
    [
