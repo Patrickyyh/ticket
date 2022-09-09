@@ -1,0 +1,7 @@
+{
+  "dependencies": {
+    "@types/mongoose": "^5.11.97",
+    "prop-types": "^15.8.1",
+    "react-stripe-checkout": "^2.6.3"
+  }
+}
