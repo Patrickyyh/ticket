@@ -6,7 +6,9 @@
   "scripts": {
     "start": "ts-node-dev  src/index.ts",
     "test": "jest --watchAll -no-cache",
-    "clear_jest": "jest --clearCache"
+    "clear_jest": "jest --clearCache",
+    "test:ci": "jest --forceExit --detectOpenHandles"
+
   },
   "jest": {
     "preset": "ts-jest",
