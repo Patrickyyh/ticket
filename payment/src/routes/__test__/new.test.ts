@@ -62,12 +62,12 @@ it('retursn a 400 when purchasing and cancelle order' , async () =>{
 });
 
 it('returns a 201 with valid inputs' , async () => {
-<<<<<<< HEAD
+
     console.log("here");
     console.log("second")
-=======
+
     console.log("over here")
->>>>>>> master
+
     // const userId = new mongoose.Types.ObjectId().toHexString();
     // const price = Math.floor(Math.random() * 100000);
     // const order = Order.build({
