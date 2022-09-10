@@ -3,7 +3,10 @@
 name: tests-ticket
 
 on:
-  pull_request
+  pull_request:
+      paths:
+      - 'ticket/**'
+
 
 jobs:
   build:
