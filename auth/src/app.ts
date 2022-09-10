@@ -15,21 +15,21 @@ import { errorHandler,NotFoundError } from '@ticketyyh/common';
 
 const app = express();
 app.set('trust proxy', true);
-app.use(json());
+app.use(express.json());
 app.use(cookieSession({
-    signed: false, // no need to encrypt the cookie 
-    secure: process.env.NODE_ENV !== 'test' , // must be http connection 
+    signed: false, // no need to encrypt the cookie
+    secure: process.env.NODE_ENV !== 'test' , // must be http connection
 }))
 
-// Router 
+// Router
 app.use(currentUserRouter);
 app.use(signinRouter)
 app.use(signoutRouter)
 app.use(signupRouter)
 
-// take charge of handling router not found errors 
+// take charge of handling router not found errors
 app.get('*',async ()=>{
-    throw new NotFoundError(); 
+    throw new NotFoundError();
 })
-app.use(errorHandler); 
-export { app } ; 
+app.use(errorHandler);
+export { app } ;

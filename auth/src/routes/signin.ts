@@ -4,10 +4,10 @@ import { BadRequestError ,validateRequest} from '@ticketyyh/common';
 import { User } from '../models/User';
 import { Password } from '../services/password';
 
-// json web token 
+// json web token
 import jwt from 'jsonwebtoken';
 
-
+console.log('delete later');
 
 const router = express.Router();
 router.post('/api/users/signin', [
@@ -20,9 +20,9 @@ router.post('/api/users/signin', [
 ,
  validateRequest
 ,async (req:Request,res:Response)=>{
-    
+
     const {email , password} = req.body;
-    const existingUser = await User.findOne({email});  
+    const existingUser = await User.findOne({email});
     if(!existingUser){
         throw new BadRequestError('You provide Invalid Credentials');
     }
@@ -33,7 +33,7 @@ router.post('/api/users/signin', [
     }
 
 
-    // create a Jwt and embed the jwt inside the cookie 
+    // create a Jwt and embed the jwt inside the cookie
     const userJwt = jwt.sign({
         id :  existingUser.id,
         email: existingUser.email
@@ -43,7 +43,7 @@ router.post('/api/users/signin', [
     }
 
     res.status(201).send(existingUser);
-    
+
 
 
 })

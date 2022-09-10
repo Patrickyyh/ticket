@@ -5,7 +5,7 @@ import request from 'supertest';
 
 
 // beforeAll -> the function be called before every other things
-// beforeAll hook 
+// beforeAll hook
 
 declare global{
     var signin: ()=> Promise<string[]>
@@ -22,22 +22,20 @@ beforeAll(async ()=>{
     const mongo = MongoMemoryServer.create();
     const mongoUri = (await mongo).getUri();
     await mongoose.connect(mongoUri, {});
-    jest.setTimeout(10000);
 } )
 
- 
-//  run before each test's run 
+
+//  run before each test's run
 beforeEach( async()=>{
     // clear the data stored in each collections
-    jest.setTimeout(60000);
     const collections = await mongoose.connection.db.collections();
     for(let collection of collections){
         await collection.deleteMany({});
     }
 })
 
- 
-// run after every test finished  
+
+// run after every test finished
 afterAll(async () => {
     if (mongo) {
       await mongo.stop();
@@ -46,7 +44,7 @@ afterAll(async () => {
   });
 
 
-// helper signin function 
+// helper signin function
 
 
 
@@ -64,6 +62,5 @@ global.signin =async () => {
 
    const cookie = response.get('Set-Cookie');
    return cookie;
-   
+
 }
-  
