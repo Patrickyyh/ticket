@@ -62,6 +62,7 @@ it('retursn a 400 when purchasing and cancelle order' , async () =>{
 });
 
 it('returns a 201 with valid inputs' , async () => {
+    console.log("over here")
     // const userId = new mongoose.Types.ObjectId().toHexString();
     // const price = Math.floor(Math.random() * 100000);
     // const order = Order.build({
@@ -93,7 +94,7 @@ it('returns a 201 with valid inputs' , async () => {
     //     stripeId: stripeCharge!.id
     // })
     // expect(payment).not.toBeNull();
-    
+
     // const chargeOptions = (stripe.charges.create as jest.Mock).mock.calls[0][0]
     // console.log((stripe.charges.create as jest.Mock).mock.calls)
     // expect(chargeOptions.source).toEqual('tok_visa');
