@@ -14,7 +14,7 @@ import { PaymentCreatedListener } from './events/listeners/payment-created-liste
 
 // import the app.ts for testing
 import { app } from './app';
-console.log("Starting....");
+
 const start =async () => {
     try {
         if(!process.env.JWT_KEY){
