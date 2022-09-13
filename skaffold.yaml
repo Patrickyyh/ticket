@@ -3,14 +3,15 @@ kind: Config
 deploy:
   kubectl:
     manifests:
-      - ./infra/k8s/* #  
+      - ./infra/k8s/* #
+      - ./infra/k8s-dev/*
 build:
   local:
     push: false
   artifacts:
     - image: yeyuhao1234/auth
       context: auth
-      docker: 
+      docker:
         dockerfile: Dockerfile
       sync:
         manual:
@@ -18,7 +19,7 @@ build:
             dest: .
     - image: yeyuhao1234/client
       context: client
-      docker: 
+      docker:
         dockerfile: Dockerfile
       sync:
         manual:
@@ -26,7 +27,7 @@ build:
             dest: .
     - image: yeyuhao1234/ticket
       context: ticket
-      docker: 
+      docker:
         dockerfile: Dockerfile
       sync:
         manual:
@@ -34,7 +35,7 @@ build:
             dest: .
     - image: yeyuhao1234/order
       context: order
-      docker: 
+      docker:
         dockerfile: Dockerfile
       sync:
         manual:

@@ -1,12 +1,13 @@
 
 import Link from "next/link";
-const LandingPage  = ({currentUser,tickets}) => {
+import React from "react";
 
+const LandingPage  = ({currentUser,tickets}) => {
     const ticketList = tickets.map(ticket => {
         return (
             <tr key = {ticket.id}>
                 <td>{ticket.title}</td>
-                <td>{ticket.price}</td> 
+                <td>{ticket.price}</td>
                 <td>
                     <Link href="/ticket/[ticketId]" as ={`/ticket/${ticket.id}`}>
                         <a>View</a>
@@ -23,8 +24,8 @@ const LandingPage  = ({currentUser,tickets}) => {
             <table className="table table-dark table-hover">
                 <thead>
                     <tr>
-                       <th>Title</th> 
-                       <th>Price</th> 
+                       <th>Title</th>
+                       <th>Price</th>
                        <th>Link</th>
                     </tr>
                 </thead>
@@ -39,7 +40,7 @@ const LandingPage  = ({currentUser,tickets}) => {
 }
 
 LandingPage.getInitialProps = async (context , client , currentUser)=> {
-    
+
     const {data} = await client.get('/api/tickets');
     return {tickets: data};
 
