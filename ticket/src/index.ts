@@ -17,7 +17,8 @@ import { natsWrapper } from './nats-wrapper';
 // import the app.ts for testing
 import { app } from './app';
 const start =async () => {
-    console.log('ticket here');
+    console.log('ticket here......');
+
     try {
         if(!process.env.JWT_KEY){
             throw new Error('JWT_KEY must be defined')
