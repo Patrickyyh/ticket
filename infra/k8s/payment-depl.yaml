@@ -11,7 +11,7 @@ spec:
     metadata:
       labels:
         app: payment
-    spec: 
+    spec:
       containers:
         - name:  payment
           image: yeyuhao1234/payment:latest
@@ -23,7 +23,7 @@ spec:
             - name: NATS_URL
               value: 'http://nats-srv:4222'
             - name: NATS_CLUSTER_ID
-              value: 'ticketing' 
+              value: 'ticketing'
             - name: MONGO_URI
               value: 'mongodb://ticket-mongo-srv:27017/payment'
             - name: JWT_KEY
