@@ -40,7 +40,7 @@ spec:
                   number: 3000
           - path: /?(.*)
             pathType: Prefix
-            backend: 
+            backend:
               service:
                 name: client-srv
                 port:
