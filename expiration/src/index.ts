@@ -3,7 +3,7 @@ import { natsWrapper } from './nats-wrapper';
 import { OrderCreatedListener } from './events/listeners/order-created-listener';
 // import the app.ts for testing
 const start =async () => {
-    console.log('here .....');
+    console.log('here ....expiration');
     try {
 
         if(!process.env.NATS_CLIENT_ID){
