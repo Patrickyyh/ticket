@@ -9,14 +9,15 @@ import { OrderCreatedListener } from './events/listeners/order-created-listener'
 import { OrderCancelledListener } from './events/listeners/order-cancelled-listener';
 
 
-//NATS client-instance 
+//NATS client-instance
 import { natsWrapper } from './nats-wrapper';
 
 
 
-// import the app.ts for testing 
+// import the app.ts for testing
 import { app } from './app';
 const start =async () => {
+    console.log('ticket here');
     try {
         if(!process.env.JWT_KEY){
             throw new Error('JWT_KEY must be defined')
@@ -39,15 +40,15 @@ const start =async () => {
         }
 
 
-    
-        //NATS-server connection 
+
+        //NATS-server connection
         await natsWrapper.connect(
             process.env.NATS_CLUSTER_ID ,
             process.env.NATS_CLIENT_ID,
             process.env.NATS_URL
         );
 
-        
+
         // listen for the event to close the NATS gracefully
         natsWrapper.client.on('close',()=>{
                 console.log('NATs connection closed!');
@@ -67,7 +68,7 @@ const start =async () => {
     } catch (error) {
          console.log(error);
     }
-    
+
 }
 app.listen(3000, ()=>{
     console.log("listen on port 3000!")
