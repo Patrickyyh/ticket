@@ -1,8 +1,9 @@
 
 import { natsWrapper } from './nats-wrapper';
 import { OrderCreatedListener } from './events/listeners/order-created-listener';
-// import the app.ts for testing 
+// import the app.ts for testing
 const start =async () => {
+    console.log('here .....');
     try {
 
         if(!process.env.NATS_CLIENT_ID){
@@ -16,15 +17,15 @@ const start =async () => {
         if(!process.env.NATS_CLUSTER_ID){
             throw new Error('NATS_CLUSTER_ID must be defined');
         }
-    
-        //NATS-server connection 
+
+        //NATS-server connection
         await natsWrapper.connect(
             process.env.NATS_CLUSTER_ID ,
             process.env.NATS_CLIENT_ID,
             process.env.NATS_URL
         );
 
-        
+
         // listen for the event to close the NATS gracefully
         natsWrapper.client.on('close',()=>{
                 console.log('NATs connection closed!');
@@ -35,12 +36,12 @@ const start =async () => {
 
         // start the listener
         new OrderCreatedListener(natsWrapper.client).listen();
-        
+
 
     } catch (error) {
          console.log(error);
     }
-    
+
 }
 
 
