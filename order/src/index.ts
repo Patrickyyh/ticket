@@ -16,11 +16,9 @@ import { PaymentCreatedListener } from './events/listeners/payment-created-liste
 import { app } from './app';
 
 const start =async () => {
-<<<<<<< HEAD
+
     console.log('here....');
-=======
-    console.log('here...');
->>>>>>> 5cf9b39fe2e1e41a3f8eee707c6f77cc7058a712
+
     try {
         if(!process.env.JWT_KEY){
             throw new Error('JWT_KEY must be defined')

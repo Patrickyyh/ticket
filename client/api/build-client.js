@@ -4,11 +4,11 @@ export default ({req}) => {
          // we are on the server
          return axios.create({
             // ingress-nginx-controller
-            baseURL: 'http://ingress-nginx-controller.ingress-nginx.svc.cluster.local',
+            baseURL: 'http://www.ticket-demo-yyh.xyz/',
             headers:  req.headers
          })
     }else{
-        // we must be on the browser 
+        // we must be on the browser
         return axios.create({
             baseURL: '/'
         })

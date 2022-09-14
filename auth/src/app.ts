@@ -18,7 +18,8 @@ app.set('trust proxy', true);
 app.use(express.json());
 app.use(cookieSession({
     signed: false, // no need to encrypt the cookie
-    secure: process.env.NODE_ENV !== 'test' , // must be http connection
+    // secure: process.env.NODE_ENV !== 'test' , // must be http connection
+    secure: false,
 }))
 
 // Router
