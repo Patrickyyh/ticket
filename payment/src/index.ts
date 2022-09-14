@@ -4,7 +4,7 @@ import {json} from 'body-parser';
 import mongoose from 'mongoose';
 import cookieSession from 'cookie-session';
 // import dotenv from 'dotenv';
-//NATS client-instance 
+//NATS client-instance
 import { natsWrapper } from './nats-wrapper';
 
 // import the listener
@@ -12,9 +12,10 @@ import { OrderCancelledListener } from './events/listeners/order-cancelled-liste
 import { OrderCreatedListener } from './events/listeners/order-created-listener';
 
 
-// import the app.ts for testing 
+// import the app.ts for testing
 import { app } from './app';
 const start =async () => {
+    console.log('payment over here');
     try {
         if(!process.env.JWT_KEY){
             throw new Error('JWT_KEY must be defined')
@@ -37,12 +38,12 @@ const start =async () => {
         }
 
 
-        //NATS-server connection 
+        //NATS-server connection
         await natsWrapper.connect(process.env.NATS_CLUSTER_ID ,process.env.NATS_CLIENT_ID,process.env.NATS_URL);
         new OrderCreatedListener(natsWrapper.client).listen();
         new OrderCancelledListener(natsWrapper.client).listen();
 
-        
+
         // listen for the event to close the NATS gracefully
         natsWrapper.client.on('close',()=>{
                 console.log('NATs connection closed!');
@@ -59,7 +60,7 @@ const start =async () => {
     } catch (error) {
          console.log(error);
     }
-    
+
 }
 app.listen(3000, ()=>{
     console.log("listen on port 3000!")
