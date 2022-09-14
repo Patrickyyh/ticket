@@ -7,13 +7,15 @@ class NatsWrapper{
         if(!this._client){
             throw new Error('Cannot access NATS client before connection');
         }
-        
-        return this._client; 
+
+        return this._client;
     }
-    
-    
+
+
     connect(clusterId: string , clientId: string,url: string): Promise <void>{
-        this._client = nats.connect(clusterId , clientId, {url});
+        this._client = nats.connect(clusterId , clientId, {url,
+            waitOnFirstConnect: true
+        });
 
 
         return new Promise((resolve, reject)=>{
